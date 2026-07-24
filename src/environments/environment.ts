@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://rust-backend-notes-app.vercel.app/api',
+  apiUrl: 'http://13.233.31.143:8080',
 };

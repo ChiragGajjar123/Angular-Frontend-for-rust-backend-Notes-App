@@ -35,7 +35,7 @@ export class ApiService {
       body: JSON.stringify({ email, password }),
     });
     const data = await parseResponse(res);
-    if (!res.ok) throw new Error((data && data.message) || 'Login failed');
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Login failed');
     return data;
   }
 
@@ -46,7 +46,7 @@ export class ApiService {
       body: JSON.stringify({ username, email, password }),
     });
     const data = await parseResponse(res);
-    if (!res.ok) throw new Error((data && data.message) || 'Signup failed');
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Signup failed');
     return data;
   }
 
@@ -59,7 +59,7 @@ export class ApiService {
     });
     if (res.status === 401) throw new Error('UNAUTHORIZED');
     const data = await parseResponse(res);
-    if (!res.ok) throw new Error('Failed to update theme');
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Failed to update theme');
     return data;
   }
 
@@ -70,7 +70,7 @@ export class ApiService {
     });
     if (res.status === 401) throw new Error('UNAUTHORIZED');
     const data = await parseResponse(res);
-    if (!res.ok) throw new Error('Failed to fetch notes');
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Failed to fetch notes');
     return data;
   }
 
@@ -82,7 +82,7 @@ export class ApiService {
     });
     if (res.status === 401) throw new Error('UNAUTHORIZED');
     const data = await parseResponse(res);
-    if (!res.ok) throw new Error('Failed to create note');
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Failed to create note');
     return data;
   }
 
@@ -94,7 +94,7 @@ export class ApiService {
     });
     if (res.status === 401) throw new Error('UNAUTHORIZED');
     const data = await parseResponse(res);
-    if (!res.ok) throw new Error('Failed to update note');
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Failed to update note');
     return data;
   }
 

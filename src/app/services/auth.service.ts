@@ -29,22 +29,36 @@ export class AuthService {
     this.loading.set(false);
   }
 
+  private handleAuthResponse(data: any): UserProfile {
+    const token = data.access_token || data.accessToken;
+    const userObj = data.user || data;
+
+    const userProfile: UserProfile = {
+      id: userObj.id,
+      username: userObj.username,
+      email: userObj.email,
+      theme: userObj.theme || 'light',
+    };
+
+    if (token) {
+      localStorage.setItem('notes_app_token', token);
+      localStorage.setItem('notes_app_user', JSON.stringify(userProfile));
+      this.user.set(userProfile);
+    }
+
+    return userProfile;
+  }
+
   async login(email: string, password: string): Promise<any> {
     const data = await this.api.login(email, password);
-    const userProfile: UserProfile = {
-      id: data.id,
-      username: data.username,
-      email: data.email,
-      theme: data.theme || 'light',
-    };
-    localStorage.setItem('notes_app_token', data.accessToken);
-    localStorage.setItem('notes_app_user', JSON.stringify(userProfile));
-    this.user.set(userProfile);
+    this.handleAuthResponse(data);
     return data;
   }
 
   async signup(username: string, email: string, password: string): Promise<any> {
-    return await this.api.signup(username, email, password);
+    const data = await this.api.signup(username, email, password);
+    this.handleAuthResponse(data);
+    return data;
   }
 
   async updateTheme(newTheme: 'light' | 'dark'): Promise<void> {

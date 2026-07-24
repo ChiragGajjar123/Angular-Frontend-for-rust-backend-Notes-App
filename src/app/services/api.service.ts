@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
-const API_URL = (environment.apiUrl || '/api').replace(/\/+$/, '');
+const API_URL = environment.apiUrl.replace(/\/+$/, '');
 
 const getHeaders = (): Record<string, string> => {
   const token = localStorage.getItem('notes_app_token');

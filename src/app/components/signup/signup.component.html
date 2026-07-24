@@ -4,7 +4,7 @@
 
     <div class="auth-header">
       <div class="auth-logo">
-        <lucide-icon [img]="icons.Sparkles" [size]="32" class="auth-logo-icon"></lucide-icon>
+        <app-icon name="sparkles" [size]="32" class="auth-logo-icon" />
         <span>CM Notes</span>
       </div>
       <p class="auth-subtitle">Join us to organize your tasks & ideas</p>
@@ -12,14 +12,14 @@
 
     @if (error()) {
       <div class="alert alert-danger">
-        <lucide-icon [img]="icons.AlertCircle" [size]="18"></lucide-icon>
+        <app-icon name="alert-circle" [size]="18" />
         <span>{{ error() }}</span>
       </div>
     }
 
     @if (success()) {
       <div class="alert alert-success">
-        <lucide-icon [img]="icons.CheckCircle" [size]="18"></lucide-icon>
+        <app-icon name="check-circle" [size]="18" />
         <span>{{ success() }}</span>
       </div>
     }
@@ -28,7 +28,7 @@
       <div class="form-group">
         <label for="signup-username">Username</label>
         <div class="input-container">
-          <lucide-icon [img]="icons.User" [size]="18" class="input-icon"></lucide-icon>
+          <app-icon name="user" [size]="18" class="input-icon" />
           <input
             id="signup-username"
             type="text"
@@ -47,7 +47,7 @@
       <div class="form-group">
         <label for="signup-email">Email</label>
         <div class="input-container">
-          <lucide-icon [img]="icons.Mail" [size]="18" class="input-icon"></lucide-icon>
+          <app-icon name="mail" [size]="18" class="input-icon" />
           <input
             id="signup-email"
             type="email"
@@ -65,7 +65,7 @@
       <div class="form-group">
         <label for="signup-password">Password</label>
         <div class="input-container">
-          <lucide-icon [img]="icons.Lock" [size]="18" class="input-icon"></lucide-icon>
+          <app-icon name="lock" [size]="18" class="input-icon" />
           <input
             id="signup-password"
             type="password"
@@ -83,7 +83,7 @@
       <div class="form-group">
         <label for="signup-confirm">Confirm Password</label>
         <div class="input-container">
-          <lucide-icon [img]="icons.Lock" [size]="18" class="input-icon"></lucide-icon>
+          <app-icon name="lock" [size]="18" class="input-icon" />
           <input
             id="signup-confirm"
             type="password"
@@ -107,7 +107,7 @@
         @if (loading()) {
           <app-spinner [size]="18" color="white" /> Creating Account…
         } @else {
-          <lucide-icon [img]="icons.UserPlus" [size]="18"></lucide-icon> Sign Up
+          <app-icon name="user-plus" [size]="18" /> Sign Up
         }
       </button>
     </form>

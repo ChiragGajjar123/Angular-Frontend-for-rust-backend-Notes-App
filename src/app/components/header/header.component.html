@@ -1,10 +1,10 @@
 <header class="dashboard-header">
   <div class="header-left">
     <button class="menu-toggle-btn" (click)="notes.isSidebarOpen.set(true)">
-      <lucide-icon [img]="icons.Menu" [size]="22"></lucide-icon>
+      <app-icon name="menu" [size]="22" />
     </button>
     <div class="search-bar">
-      <lucide-icon [img]="icons.Search" [size]="18" class="search-icon"></lucide-icon>
+      <app-icon name="search" [size]="18" class="search-icon" />
       <input
         type="text"
         class="search-input"
@@ -26,13 +26,13 @@
       @if (notes.themeSaving()) {
         <app-spinner [size]="20" color="currentColor" />
       } @else if (notes.isDarkMode()) {
-        <lucide-icon [img]="icons.Sun" [size]="20"></lucide-icon>
+        <app-icon name="sun" [size]="20" />
       } @else {
-        <lucide-icon [img]="icons.Moon" [size]="20"></lucide-icon>
+        <app-icon name="moon" [size]="20" />
       }
     </button>
     <button class="btn-add-note" (click)="notes.handleOpenCreateModal()">
-      <lucide-icon [img]="icons.Plus" [size]="20"></lucide-icon>
+      <app-icon name="plus" [size]="20" />
       <span>New Note</span>
     </button>
   </div>

@@ -3,21 +3,18 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
-import { LucideAngularModule, LogIn, Mail, Lock, AlertCircle, Sparkles } from 'lucide-angular';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterLink, SpinnerComponent, LucideAngularModule],
+  imports: [FormsModule, RouterLink, SpinnerComponent, IconComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
   private auth = inject(AuthService);
   private router = inject(Router);
-
-  // Lucide icons
-  readonly icons = { LogIn, Mail, Lock, AlertCircle, Sparkles };
 
   email = signal('');
   password = signal('');

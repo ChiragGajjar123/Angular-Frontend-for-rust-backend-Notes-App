@@ -6,7 +6,7 @@ import { NotesListComponent } from '../notes-list/notes-list.component';
 import { NoteModalComponent } from '../note-modal/note-modal.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ToastComponent } from '../toast/toast.component';
-import { LucideAngularModule, AlertCircle } from 'lucide-angular';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,14 +18,13 @@ import { LucideAngularModule, AlertCircle } from 'lucide-angular';
     NoteModalComponent,
     ConfirmDialogComponent,
     ToastComponent,
-    LucideAngularModule,
+    IconComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
   notes = inject(NotesService);
-  readonly icons = { AlertCircle };
 
   ngOnInit(): void {
     this.notes.initNotes();

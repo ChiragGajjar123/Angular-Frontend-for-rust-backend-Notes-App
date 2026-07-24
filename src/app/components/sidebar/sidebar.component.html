@@ -9,11 +9,11 @@
 
   <div class="sidebar-header">
     <div class="sidebar-logo">
-      <lucide-icon [img]="icons.Sparkles" [size]="24" class="sidebar-logo-icon"></lucide-icon>
+      <app-icon name="sparkles" [size]="24" class="sidebar-logo-icon" />
       <span>CM Notes</span>
     </div>
     <button class="sidebar-close-btn" (click)="notes.isSidebarOpen.set(false)">
-      <lucide-icon [img]="icons.X" [size]="20"></lucide-icon>
+      <app-icon name="x" [size]="20" />
     </button>
   </div>
 
@@ -37,7 +37,7 @@
       (click)="notes.handleSelectTag(null)"
     >
       <div class="nav-icon-text">
-        <lucide-icon [img]="icons.FileText" [size]="18"></lucide-icon>
+        <app-icon name="file-text" [size]="18" />
         <span>All Notes</span>
       </div>
       <span class="badge">{{ notes.notes().length }}</span>
@@ -55,7 +55,7 @@
             (click)="notes.handleSelectTag(tag)"
           >
             <div class="nav-icon-text">
-              <lucide-icon [img]="icons.Tag" [size]="16"></lucide-icon>
+              <app-icon name="tag" [size]="16" />
               <span>{{ tag }}</span>
             </div>
             <span class="badge">{{ getTagCount(tag) }}</span>
@@ -67,7 +67,7 @@
 
   <div class="logout-btn nav-item" (click)="handleLogout()">
     <div class="nav-icon-text">
-      <lucide-icon [img]="icons.LogOut" [size]="18"></lucide-icon>
+      <app-icon name="logout" [size]="18" />
       <span>Sign Out</span>
     </div>
   </div>

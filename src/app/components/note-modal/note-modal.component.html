@@ -12,7 +12,7 @@
           (click)="notes.isModalOpen.set(false)"
           [disabled]="notes.modalSaving()"
         >
-          <lucide-icon [img]="icons.X" [size]="20"></lucide-icon>
+          <app-icon name="x" [size]="20" />
         </button>
       </div>
 
@@ -57,7 +57,7 @@
                     (click)="notes.handleRemoveTag(tag)"
                     [disabled]="notes.modalSaving()"
                   >
-                    <lucide-icon [img]="icons.X" [size]="12"></lucide-icon>
+                    <app-icon name="x" [size]="12" />
                   </button>
                 </span>
               }
@@ -86,7 +86,7 @@
                   (click)="setColor(colorOpt)"
                 >
                   @if (notes.noteForm().color === colorOpt) {
-                    <lucide-icon [img]="icons.Check" [size]="14" class="color-check"></lucide-icon>
+                    <app-icon name="check" [size]="14" class="color-check" />
                   }
                 </div>
               }
@@ -127,7 +127,7 @@
             @if (notes.modalSaving()) {
               <app-spinner [size]="18" color="white" /> Saving…
             } @else {
-              <lucide-icon [img]="icons.Check" [size]="18"></lucide-icon><span>Save Note</span>
+              <app-icon name="check" [size]="18" /><span>Save Note</span>
             }
           </button>
         </div>

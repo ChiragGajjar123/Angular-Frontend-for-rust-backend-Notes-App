@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NotesService } from '../../services/notes.service';
-import { LucideAngularModule, Sparkles, X, FileText, Tag, LogOut } from 'lucide-angular';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [IconComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
@@ -15,8 +15,6 @@ export class SidebarComponent {
   auth = inject(AuthService);
   notes = inject(NotesService);
   private router = inject(Router);
-
-  readonly icons = { Sparkles, X, FileText, Tag, LogOut };
 
   handleLogout(): void {
     this.auth.logout();

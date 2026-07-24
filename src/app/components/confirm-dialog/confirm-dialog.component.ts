@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { LucideAngularModule, AlertTriangle } from 'lucide-angular';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-confirm-dialog',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [IconComponent],
   templateUrl: './confirm-dialog.component.html',
   styleUrl: './confirm-dialog.component.css',
 })
@@ -14,6 +14,4 @@ export class ConfirmDialogComponent {
   @Input() message = 'Are you sure?';
   @Output() confirm = new EventEmitter<void>();
   @Output() cancel = new EventEmitter<void>();
-
-  readonly icons = { AlertTriangle };
 }

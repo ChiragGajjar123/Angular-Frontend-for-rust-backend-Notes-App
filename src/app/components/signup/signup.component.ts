@@ -3,20 +3,18 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
-import { LucideAngularModule, UserPlus, User, Mail, Lock, AlertCircle, CheckCircle, Sparkles } from 'lucide-angular';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule, RouterLink, SpinnerComponent, LucideAngularModule],
+  imports: [FormsModule, RouterLink, SpinnerComponent, IconComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
   private auth = inject(AuthService);
   private router = inject(Router);
-
-  readonly icons = { UserPlus, User, Mail, Lock, AlertCircle, CheckCircle, Sparkles };
 
   username = signal('');
   email = signal('');

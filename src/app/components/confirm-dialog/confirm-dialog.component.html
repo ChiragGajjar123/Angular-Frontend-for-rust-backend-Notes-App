@@ -3,7 +3,7 @@
     <div class="confirm-dialog" (click)="$event.stopPropagation()">
       <div class="confirm-glow"></div>
       <div class="confirm-icon-wrap">
-        <lucide-icon [img]="icons.AlertTriangle" [size]="28" class="confirm-icon"></lucide-icon>
+        <app-icon name="alert-triangle" [size]="28" class="confirm-icon" />
       </div>
       <h3 class="confirm-title">{{ title }}</h3>
       <p class="confirm-message">{{ message }}</p>

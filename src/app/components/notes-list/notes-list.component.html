@@ -3,7 +3,7 @@
 } @else if (notes.filteredNotes().length === 0) {
   <div class="empty-state">
     <div class="empty-glow"></div>
-    <lucide-icon [img]="icons.FileText" [size]="60" class="empty-state-icon"></lucide-icon>
+    <app-icon name="file-text" [size]="60" class="empty-state-icon" />
     <h3>No Notes Found</h3>
     <p>
       @if (notes.selectedTag()) {
@@ -14,7 +14,7 @@
     </p>
     @if (!notes.selectedTag()) {
       <button class="btn-create" (click)="notes.handleOpenCreateModal()">
-        <lucide-icon [img]="icons.Plus" [size]="20"></lucide-icon>
+        <app-icon name="plus" [size]="20" />
         <span>Create a Note</span>
       </button>
     }
@@ -24,7 +24,7 @@
   @if (notes.pinnedNotes().length > 0) {
     <section class="notes-section">
       <h3 class="section-title">
-        <lucide-icon [img]="icons.Pin" [size]="18" class="pinned-icon"></lucide-icon>
+        <app-icon name="pin" [size]="18" class="pinned-icon" />
         <span>Pinned</span>
       </h3>
       <div class="notes-grid">

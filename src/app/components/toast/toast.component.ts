@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { LucideAngularModule, AlertCircle, CheckCircle, AlertTriangle, X } from 'lucide-angular';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-toast',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [IconComponent],
   templateUrl: './toast.component.html',
   styleUrl: './toast.component.css',
 })
@@ -12,16 +12,14 @@ export class ToastComponent {
   @Input() toasts: any[] = [];
   @Output() dismiss = new EventEmitter<number>();
 
-  readonly icons = { AlertCircle, CheckCircle, AlertTriangle, X };
-
-  getIcon(type: string) {
+  getIconName(type: string): string {
     switch (type) {
       case 'success':
-        return this.icons.CheckCircle;
+        return 'check-circle';
       case 'warning':
-        return this.icons.AlertTriangle;
+        return 'alert-triangle';
       default:
-        return this.icons.AlertCircle;
+        return 'alert-circle';
     }
   }
 }

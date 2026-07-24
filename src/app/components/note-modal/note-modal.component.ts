@@ -2,18 +2,17 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NotesService } from '../../services/notes.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
-import { LucideAngularModule, X, Check } from 'lucide-angular';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-note-modal',
   standalone: true,
-  imports: [FormsModule, SpinnerComponent, LucideAngularModule],
+  imports: [FormsModule, SpinnerComponent, IconComponent],
   templateUrl: './note-modal.component.html',
   styleUrl: './note-modal.component.css',
 })
 export class NoteModalComponent {
   notes = inject(NotesService);
-  readonly icons = { X, Check };
   readonly colors = ['slate', 'blue', 'green', 'yellow', 'purple', 'rose'];
 
   onTagKeydown(event: KeyboardEvent): void {

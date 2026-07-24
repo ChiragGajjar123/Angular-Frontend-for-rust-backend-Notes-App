@@ -4,7 +4,7 @@
 
     <div class="auth-header">
       <div class="auth-logo">
-        <lucide-icon [img]="icons.Sparkles" [size]="32" class="auth-logo-icon"></lucide-icon>
+        <app-icon name="sparkles" [size]="32" class="auth-logo-icon" />
         <span>CM Notes</span>
       </div>
       <p class="auth-subtitle">Capture thoughts, secure your ideas</p>
@@ -12,7 +12,7 @@
 
     @if (error()) {
       <div class="alert alert-danger">
-        <lucide-icon [img]="icons.AlertCircle" [size]="18"></lucide-icon>
+        <app-icon name="alert-circle" [size]="18" />
         <span>{{ error() }}</span>
       </div>
     }
@@ -21,7 +21,7 @@
       <div class="form-group">
         <label for="login-email">Email</label>
         <div class="input-container">
-          <lucide-icon [img]="icons.Mail" [size]="18" class="input-icon"></lucide-icon>
+          <app-icon name="mail" [size]="18" class="input-icon" />
           <input
             id="login-email"
             type="email"
@@ -39,7 +39,7 @@
       <div class="form-group">
         <label for="login-password">Password</label>
         <div class="input-container">
-          <lucide-icon [img]="icons.Lock" [size]="18" class="input-icon"></lucide-icon>
+          <app-icon name="lock" [size]="18" class="input-icon" />
           <input
             id="login-password"
             type="password"
@@ -63,7 +63,7 @@
         @if (loading()) {
           <app-spinner [size]="18" color="white" /> Logging in…
         } @else {
-          <lucide-icon [img]="icons.LogIn" [size]="18"></lucide-icon> Log In
+          <app-icon name="log-in" [size]="18" /> Log In
         }
       </button>
     </form>

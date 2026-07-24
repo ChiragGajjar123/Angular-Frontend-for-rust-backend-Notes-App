@@ -19,7 +19,7 @@
       @if (isPinning) {
         <app-spinner [size]="16" color="currentColor" />
       } @else {
-        <lucide-icon [img]="icons.Pin" [size]="16" [attr.fill]="note.pinned ? 'currentColor' : 'none'"></lucide-icon>
+        <app-icon name="pin" [size]="16" [fill]="note.pinned ? 'currentColor' : 'none'" />
       }
     </button>
   </div>
@@ -46,7 +46,7 @@
         @if (isDeleting) {
           <app-spinner [size]="15" color="currentColor" />
         } @else {
-          <lucide-icon [img]="icons.Trash2" [size]="15"></lucide-icon>
+          <app-icon name="trash-2" [size]="15" />
         }
       </button>
     </div>

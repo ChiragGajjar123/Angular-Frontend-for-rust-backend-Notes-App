@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://13.233.31.143:8080',
+  apiUrl: 'https://13-233-31-143.sslip.io',
 };

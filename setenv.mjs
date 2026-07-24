@@ -12,7 +12,7 @@ if (!apiUrl && existsSync('.env')) {
   }
 }
 
-apiUrl = apiUrl || 'https://rust-backend-notes-app.vercel.app/api';
+apiUrl = apiUrl || '/api';
 
 const envConfigFile = `export const environment = {
   apiUrl: '${apiUrl}',

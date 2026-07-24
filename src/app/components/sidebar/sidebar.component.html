@@ -1,0 +1,74 @@
+<!-- Sidebar Overlay (Mobile) -->
+@if (notes.isSidebarOpen()) {
+  <div class="sidebar-overlay" (click)="notes.isSidebarOpen.set(false)"></div>
+}
+
+<!-- Sidebar Panel -->
+<aside class="sidebar" [class.sidebar-open]="notes.isSidebarOpen()">
+  <div class="sidebar-glow"></div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-logo">
+      <lucide-icon [img]="icons.Sparkles" [size]="24" class="sidebar-logo-icon"></lucide-icon>
+      <span>CM Notes</span>
+    </div>
+    <button class="sidebar-close-btn" (click)="notes.isSidebarOpen.set(false)">
+      <lucide-icon [img]="icons.X" [size]="20"></lucide-icon>
+    </button>
+  </div>
+
+  @if (auth.user(); as user) {
+    <div class="user-profile">
+      <div class="avatar">
+        {{ user.username.charAt(0).toUpperCase() }}
+      </div>
+      <div class="user-info">
+        <span class="username">{{ user.username }}</span>
+        <span class="user-email">{{ user.email }}</span>
+      </div>
+    </div>
+  }
+
+  <nav class="nav-section">
+    <span class="nav-title">Filters</span>
+    <div
+      class="nav-item"
+      [class.active]="notes.selectedTag() === null"
+      (click)="notes.handleSelectTag(null)"
+    >
+      <div class="nav-icon-text">
+        <lucide-icon [img]="icons.FileText" [size]="18"></lucide-icon>
+        <span>All Notes</span>
+      </div>
+      <span class="badge">{{ notes.notes().length }}</span>
+    </div>
+  </nav>
+
+  @if (notes.allTags().length > 0) {
+    <nav class="nav-section">
+      <span class="nav-title">Tags</span>
+      <div class="tag-list">
+        @for (tag of notes.allTags(); track tag) {
+          <div
+            class="nav-item"
+            [class.active]="notes.selectedTag() === tag"
+            (click)="notes.handleSelectTag(tag)"
+          >
+            <div class="nav-icon-text">
+              <lucide-icon [img]="icons.Tag" [size]="16"></lucide-icon>
+              <span>{{ tag }}</span>
+            </div>
+            <span class="badge">{{ getTagCount(tag) }}</span>
+          </div>
+        }
+      </div>
+    </nav>
+  }
+
+  <div class="logout-btn nav-item" (click)="handleLogout()">
+    <div class="nav-icon-text">
+      <lucide-icon [img]="icons.LogOut" [size]="18"></lucide-icon>
+      <span>Sign Out</span>
+    </div>
+  </div>
+</aside>

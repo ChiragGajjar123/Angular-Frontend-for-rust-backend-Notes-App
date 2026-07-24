@@ -1,0 +1,13 @@
+@if (toasts.length) {
+  <div class="toast-container">
+    @for (toast of toasts; track toast.id) {
+      <div class="toast" [class]="'toast toast-' + toast.type">
+        <lucide-icon [img]="getIcon(toast.type)" [size]="18" class="toast-icon"></lucide-icon>
+        <span class="toast-message">{{ toast.message }}</span>
+        <button class="toast-close" (click)="dismiss.emit(toast.id)">
+          <lucide-icon [img]="icons.X" [size]="14"></lucide-icon>
+        </button>
+      </div>
+    }
+  </div>
+}

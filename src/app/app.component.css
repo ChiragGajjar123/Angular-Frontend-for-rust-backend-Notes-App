@@ -1,0 +1,97 @@
+.app-container {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  width: 100%;
+  position: relative;
+}
+
+.bg-glows {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Enhanced chromatic aberration glow orbs */
+.glow-1 {
+  position: absolute;
+  top: -15%;
+  right: -10%;
+  width: 55vw;
+  height: 55vw;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0) 60%),
+    radial-gradient(circle at 55% 45%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  filter: blur(100px);
+  animation: glowFloat1 12s ease-in-out infinite alternate;
+}
+
+.glow-2 {
+  position: absolute;
+  bottom: -15%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(236, 72, 153, 0.14) 0%, rgba(236, 72, 153, 0) 60%),
+    radial-gradient(circle at 40% 60%, rgba(251, 146, 60, 0.08) 0%, transparent 50%);
+  filter: blur(100px);
+  animation: glowFloat2 14s ease-in-out infinite alternate;
+}
+
+.glow-3 {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  width: 35vw;
+  height: 35vw;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0) 60%),
+    radial-gradient(circle at 60% 40%, rgba(34, 211, 238, 0.06) 0%, transparent 50%);
+  filter: blur(120px);
+  animation: glowFloat3 16s ease-in-out infinite alternate;
+}
+
+/* NEW: 4th prismatic glow orb for enhanced depth */
+.glow-4 {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(251, 191, 36, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 45% 55%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
+  filter: blur(130px);
+  animation: glowFloat4 18s ease-in-out infinite alternate;
+}
+
+@keyframes glowFloat1 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { transform: translate(-30px, 20px) scale(1.05) rotate(2deg); }
+}
+
+@keyframes glowFloat2 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { transform: translate(20px, -30px) scale(1.08) rotate(-1.5deg); }
+}
+
+@keyframes glowFloat3 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  100% { transform: translate(-20px, -15px) scale(1.1); opacity: 1; }
+}
+
+@keyframes glowFloat4 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.5; }
+  100% { transform: translate(15px, 25px) scale(1.06) rotate(3deg); opacity: 0.9; }
+}

@@ -1,0 +1,120 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-glow"></div>
+
+    <div class="auth-header">
+      <div class="auth-logo">
+        <lucide-icon [img]="icons.Sparkles" [size]="32" class="auth-logo-icon"></lucide-icon>
+        <span>CM Notes</span>
+      </div>
+      <p class="auth-subtitle">Join us to organize your tasks & ideas</p>
+    </div>
+
+    @if (error()) {
+      <div class="alert alert-danger">
+        <lucide-icon [img]="icons.AlertCircle" [size]="18"></lucide-icon>
+        <span>{{ error() }}</span>
+      </div>
+    }
+
+    @if (success()) {
+      <div class="alert alert-success">
+        <lucide-icon [img]="icons.CheckCircle" [size]="18"></lucide-icon>
+        <span>{{ success() }}</span>
+      </div>
+    }
+
+    <form (ngSubmit)="handleSubmit()">
+      <div class="form-group">
+        <label for="signup-username">Username</label>
+        <div class="input-container">
+          <lucide-icon [img]="icons.User" [size]="18" class="input-icon"></lucide-icon>
+          <input
+            id="signup-username"
+            type="text"
+            class="form-input"
+            placeholder="Pick a username"
+            [ngModel]="username()"
+            (ngModelChange)="username.set($event)"
+            [disabled]="loading()"
+            autocomplete="username"
+            maxlength="100"
+            name="username"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="signup-email">Email</label>
+        <div class="input-container">
+          <lucide-icon [img]="icons.Mail" [size]="18" class="input-icon"></lucide-icon>
+          <input
+            id="signup-email"
+            type="email"
+            class="form-input"
+            placeholder="you@example.com"
+            [ngModel]="email()"
+            (ngModelChange)="email.set($event)"
+            [disabled]="loading()"
+            autocomplete="email"
+            name="email"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="signup-password">Password</label>
+        <div class="input-container">
+          <lucide-icon [img]="icons.Lock" [size]="18" class="input-icon"></lucide-icon>
+          <input
+            id="signup-password"
+            type="password"
+            class="form-input"
+            placeholder="••••••••"
+            [ngModel]="password()"
+            (ngModelChange)="password.set($event)"
+            [disabled]="loading()"
+            autocomplete="new-password"
+            name="password"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="signup-confirm">Confirm Password</label>
+        <div class="input-container">
+          <lucide-icon [img]="icons.Lock" [size]="18" class="input-icon"></lucide-icon>
+          <input
+            id="signup-confirm"
+            type="password"
+            class="form-input"
+            placeholder="••••••••"
+            [ngModel]="confirmPassword()"
+            (ngModelChange)="confirmPassword.set($event)"
+            [disabled]="loading()"
+            autocomplete="new-password"
+            name="confirmPassword"
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [class.btn-loading]="loading()"
+        [disabled]="loading()"
+      >
+        @if (loading()) {
+          <app-spinner [size]="18" color="white" /> Creating Account…
+        } @else {
+          <lucide-icon [img]="icons.UserPlus" [size]="18"></lucide-icon> Sign Up
+        }
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      Already have an account?
+      <a routerLink="/login" class="auth-link">Log in</a>
+    </div>
+  </div>
+</div>

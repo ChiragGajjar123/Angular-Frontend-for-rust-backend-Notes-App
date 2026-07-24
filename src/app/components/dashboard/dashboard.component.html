@@ -1,0 +1,31 @@
+<div class="dashboard">
+  <app-sidebar />
+
+  <main class="main-content">
+    <app-header />
+
+    @if (notes.error()) {
+      <div class="alert alert-danger">
+        <lucide-icon [img]="icons.AlertCircle" [size]="18"></lucide-icon>
+        <span>{{ notes.error() }}</span>
+      </div>
+    }
+
+    <app-notes-list />
+  </main>
+
+  <app-note-modal />
+
+  <app-confirm-dialog
+    [visible]="notes.confirmState().visible"
+    [title]="notes.confirmState().title"
+    [message]="notes.confirmState().message"
+    (confirm)="notes.confirmState().onConfirm?.()"
+    (cancel)="notes.confirmState().onCancel?.()"
+  />
+
+  <app-toast
+    [toasts]="notes.toasts()"
+    (dismiss)="notes.dismissToast($event)"
+  />
+</div>

@@ -1,0 +1,53 @@
+@if (notes.loading()) {
+  <app-overlay-loader label="Loading notes…" />
+} @else if (notes.filteredNotes().length === 0) {
+  <div class="empty-state">
+    <div class="empty-glow"></div>
+    <lucide-icon [img]="icons.FileText" [size]="60" class="empty-state-icon"></lucide-icon>
+    <h3>No Notes Found</h3>
+    <p>
+      @if (notes.selectedTag()) {
+        You don't have any notes tagged with "{{ notes.selectedTag() }}".
+      } @else {
+        Get started by capturing your first thought today!
+      }
+    </p>
+    @if (!notes.selectedTag()) {
+      <button class="btn-create" (click)="notes.handleOpenCreateModal()">
+        <lucide-icon [img]="icons.Plus" [size]="20"></lucide-icon>
+        <span>Create a Note</span>
+      </button>
+    }
+  </div>
+} @else {
+  <!-- Pinned Notes -->
+  @if (notes.pinnedNotes().length > 0) {
+    <section class="notes-section">
+      <h3 class="section-title">
+        <lucide-icon [img]="icons.Pin" [size]="18" class="pinned-icon"></lucide-icon>
+        <span>Pinned</span>
+      </h3>
+      <div class="notes-grid">
+        @for (note of notes.pinnedNotes(); track note.id) {
+          <app-note-card [note]="note" />
+        }
+      </div>
+    </section>
+  }
+
+  <!-- Other Notes -->
+  @if (notes.otherNotes().length > 0) {
+    <section>
+      @if (notes.pinnedNotes().length > 0) {
+        <h3 class="section-title">
+          <span>Others</span>
+        </h3>
+      }
+      <div class="notes-grid">
+        @for (note of notes.otherNotes(); track note.id) {
+          <app-note-card [note]="note" />
+        }
+      </div>
+    </section>
+  }
+}

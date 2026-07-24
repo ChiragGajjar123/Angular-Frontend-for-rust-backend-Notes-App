@@ -1,0 +1,15 @@
+@if (auth.loading()) {
+  <app-page-loader />
+} @else {
+  <div class="app-container" [class.dark]="auth.isDarkMode()">
+    <!-- Liquid Glass ambient background glows -->
+    <div class="bg-glows">
+      <div class="glow-1"></div>
+      <div class="glow-2"></div>
+      <div class="glow-3"></div>
+      <div class="glow-4"></div>
+    </div>
+
+    <router-outlet />
+  </div>
+}

@@ -1,0 +1,54 @@
+<div
+  class="note-card"
+  [class]="'note-card color-' + (note.color || 'slate')"
+  [class.note-busy]="isDeleting"
+  (click)="notes.handleOpenEditModal(note)"
+>
+  <div class="note-glow"></div>
+
+  <div class="note-header">
+    <h4 class="note-title">{{ note.title || 'Untitled' }}</h4>
+    <button
+      class="note-pin-btn"
+      [class.pinned]="note.pinned"
+      [class.note-busy]="isPinning"
+      (click)="notes.handleTogglePin($event, note)"
+      [disabled]="isPinning"
+      [title]="note.pinned ? 'Unpin note' : 'Pin note'"
+    >
+      @if (isPinning) {
+        <app-spinner [size]="16" color="currentColor" />
+      } @else {
+        <lucide-icon [img]="icons.Pin" [size]="16" [attr.fill]="note.pinned ? 'currentColor' : 'none'"></lucide-icon>
+      }
+    </button>
+  </div>
+
+  <p class="note-content">{{ note.content }}</p>
+
+  @if (note.tags && note.tags.length > 0) {
+    <div class="note-tags-container">
+      @for (tag of note.tags; track tag) {
+        <span class="note-tag">#{{ tag }}</span>
+      }
+    </div>
+  }
+
+  <div class="note-footer">
+    <span class="note-date">{{ notes.formatDate(note.updatedAt) }}</span>
+    <div class="note-actions">
+      <button
+        class="note-action-btn delete"
+        (click)="notes.handleDeleteNote($event, note.id)"
+        title="Delete note"
+        [disabled]="isDeleting"
+      >
+        @if (isDeleting) {
+          <app-spinner [size]="15" color="currentColor" />
+        } @else {
+          <lucide-icon [img]="icons.Trash2" [size]="15"></lucide-icon>
+        }
+      </button>
+    </div>
+  </div>
+</div>

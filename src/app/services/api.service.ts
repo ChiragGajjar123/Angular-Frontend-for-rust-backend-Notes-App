@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
-/** Normalize API_URL: strip trailing slashes to prevent double-slash (//) redirects */
-let rawApiUrl = (environment.apiUrl || 'http://localhost:8080/api').trim();
-rawApiUrl = rawApiUrl.replace(/\/+$/, '');
-if (rawApiUrl.startsWith('http') && !rawApiUrl.endsWith('/api')) {
-  rawApiUrl = `${rawApiUrl}/api`;
-}
-const API_URL = rawApiUrl;
+const API_URL = (environment.apiUrl || '/api').replace(/\/+$/, '');
 
 const getHeaders = (): Record<string, string> => {
   const token = localStorage.getItem('notes_app_token');

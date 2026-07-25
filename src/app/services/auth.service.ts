@@ -61,6 +61,18 @@ export class AuthService {
     return data;
   }
 
+  async forgotPassword(email: string): Promise<any> {
+    return await this.api.forgotPassword(email);
+  }
+
+  async verifyResetCode(email: string, code: string): Promise<any> {
+    return await this.api.verifyResetCode(email, code);
+  }
+
+  async resetPassword(email: string, code: string, newPassword: string): Promise<any> {
+    return await this.api.resetPassword(email, code, newPassword);
+  }
+
   async updateTheme(newTheme: 'light' | 'dark'): Promise<void> {
     try {
       await this.api.updateTheme(newTheme);

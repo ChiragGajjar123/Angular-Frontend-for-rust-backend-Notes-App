@@ -50,6 +50,39 @@ export class ApiService {
     return data;
   }
 
+  async forgotPassword(email: string): Promise<any> {
+    const res = await fetch(`${API_URL}/auth/forgot-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    const data = await parseResponse(res);
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Failed to send reset code');
+    return data;
+  }
+
+  async verifyResetCode(email: string, code: string): Promise<any> {
+    const res = await fetch(`${API_URL}/auth/verify-reset-code`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, code }),
+    });
+    const data = await parseResponse(res);
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Invalid or expired code');
+    return data;
+  }
+
+  async resetPassword(email: string, code: string, newPassword: string): Promise<any> {
+    const res = await fetch(`${API_URL}/auth/reset-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, code, new_password: newPassword }),
+    });
+    const data = await parseResponse(res);
+    if (!res.ok) throw new Error((data && (data.error || data.message)) || 'Failed to reset password');
+    return data;
+  }
+
   // User Configurations API
   async updateTheme(theme: string): Promise<any> {
     const res = await fetch(`${API_URL}/users/theme`, {

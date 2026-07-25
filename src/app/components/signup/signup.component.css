@@ -119,6 +119,7 @@
   left: 14px;
   color: var(--text-secondary);
   pointer-events: none;
+  z-index: 2;
 }
 
 .form-input {
